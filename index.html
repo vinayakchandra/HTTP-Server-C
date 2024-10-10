@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding HTTP Servers and Operating Systems</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 10px;
+        }
+
+        section {
+            background: #ffffff;
+            /*margin: 20px 0;*/
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #35424a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 5px;
+            background: #35424a;
+            color: #ffffff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>Understanding HTTP Servers and Operating Systems</h1>
+    <nav>
+        <ul>
+            <li><a href="#os-role">OS Role</a></li>
+            <li><a href="#http-server-software">HTTP Server Software</a></li>
+            <li><a href="#networking">Networking and Protocols</a></li>
+            <li><a href="#deployment">Deployment and Configuration</a></li>
+            <li><a href="#performance">Performance and Optimization</a></li>
+            <li><a href="#server-info">Server Info</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="os-role">
+        <h2>1. Operating System Role</h2>
+        <p>The OS acts as an intermediary between hardware resources and the HTTP server software. It provides essential services and management functions required for the server to operate efficiently.</p>
+        <ul>
+            <li><strong>Process Management:</strong> The OS manages processes, scheduling them, and allocating CPU time.</li>
+            <li><strong>Memory Management:</strong> The OS allocates and manages memory for the HTTP server.</li>
+            <li><strong>File System Management:</strong> The OS manages the file system where server files are stored.</li>
+            <li><strong>Networking:</strong> The OS provides networking capabilities for communication.</li>
+            <li><strong>Security:</strong> The OS enforces security policies to protect the server.</li>
+        </ul>
+    </section>
+
+    <section id="http-server-software">
+        <h2>2. HTTP Server Software</h2>
+        <p>There are various HTTP server software applications, such as Apache, Nginx, Microsoft IIS, and LiteSpeed.</p>
+        <ul>
+            <li><strong>Listening for Requests:</strong> The server binds to a port and listens for incoming requests.</li>
+            <li><strong>Processing Requests:</strong> The server processes requests by determining the requested resource.</li>
+            <li><strong>Generating Responses:</strong> The server constructs an HTTP response with status codes and content.</li>
+            <li><strong>Logging and Monitoring:</strong> Most servers provide logging capabilities for tracking activities.</li>
+            <li><strong>Concurrency Handling:</strong> Servers handle multiple requests using multithreading or forking.</li>
+        </ul>
+    </section>
+
+    <section id="networking">
+        <h2>3. Networking and Protocols</h2>
+        <p>The HTTP server relies heavily on networking protocols managed by the OS.</p>
+        <ul>
+            <li><strong>TCP/IP Stack:</strong> The OS implements the TCP/IP protocol stack for communication.</li>
+            <li><strong>Sockets:</strong> The server uses sockets to establish connections with clients.</li>
+            <li><strong>DNS Resolution:</strong> The OS translates domain names into IP addresses.</li>
+        </ul>
+    </section>
+
+    <section id="deployment">
+        <h2>4. Deployment and Configuration</h2>
+        <p>Deploying an HTTP server involves configuring both server software and OS settings.</p>
+        <ul>
+            <li><strong>Configuration Files:</strong> HTTP servers use configuration files to define settings.</li>
+            <li><strong>OS Permissions:</strong> The OS controls file and network permissions for security.</li>
+            <li><strong>Resource Limits:</strong> The OS can impose limits on resources to prevent monopolization.</li>
+        </ul>
+    </section>
+
+    <section id="performance">
+        <h2>5. Performance and Optimization</h2>
+        <p>The performance of an HTTP server is influenced by both the server software and the underlying OS.</p>
+        <ul>
+            <li><strong>Caching:</strong> Implementing caching strategies to reduce server load.</li>
+            <li><strong>Load Balancing:</strong> Distributing requests across multiple servers for optimization.</li>
+            <li><strong>Compression:</strong> Reducing response sizes to improve load times.</li>
+            <li><strong>Asynchronous Processing:</strong> Handling requests without blocking for concurrency.</li>
+        </ul>
+    </section>
+
+    <section id="server-info">
+        <h2>6. Server Information</h2>
+        <p>This section provides details on the C-based HTTP server implementation:</p>
+        <ul>
+            <li><strong>Port:</strong> The server listens on port <code>8080</code>.</li>
+            <li><strong>File Types Supported:</strong> The server can serve various file types, including:
+                <ul>
+                    <li>HTML (.html, .htm)</li>
+                    <li>Text (.txt)</li>
+                    <li>JPEG (.jpg, .jpeg)</li>
+                    <li>PNG (.png)</li>
+                </ul>
+            </li>
+            <li><strong>Handling Requests:</strong> The server handles HTTP GET requests and responds with the requested file content or a 404 error if the file is not found.</li>
+            <li><strong>Multi-threading:</strong> The server supports concurrent connections using pthreads, allowing it to handle multiple clients simultaneously.</li>
+            <li><strong>URL Decoding:</strong> The server includes a URL decoding function to process encoded file names correctly.</li>
+        </ul>
+        <p>To run the server, compile the C code and execute the binary. You can then access the server from a web browser by navigating to <code>http://localhost:8080/[file_name]</code>, replacing <code>[file_name]</code> with the name of the file you wish to access.</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Understanding HTTP Servers and Operating Systems</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
