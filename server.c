@@ -107,7 +107,6 @@ void build_http_response(const char *file_name, const char *file_ext,
 }
 
 void *handle_client(void *arg) {
-//    printf("new request\n");
     int client_fd = *((int *) arg);
     char *buffer = (char *) malloc(BUFFER_SIZE * sizeof(char));
     printf("%s\n", buffer);
@@ -153,10 +152,17 @@ int main() {
     // initialize server
     int server_fd;
     struct sockaddr_in server_addr;
+    int opt = 1;
 
     // create TCP server socket
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         perror("socket failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Attach socket to the port
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt))) {
+        perror("setsockopt");
         exit(EXIT_FAILURE);
     }
 
@@ -186,8 +192,7 @@ int main() {
         int *client_fd = malloc(sizeof(int));
 
         // accept client connection
-        if ((*client_fd = accept(server_fd, (struct sockaddr *) &client_addr,
-                                 &client_addr_len)) < 0) {
+        if ((*client_fd = accept(server_fd, (struct sockaddr *) &client_addr, &client_addr_len)) < 0) {
             perror("accept failed");
             continue;
         }
