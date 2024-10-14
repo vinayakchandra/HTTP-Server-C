@@ -51,7 +51,7 @@ The server will start listening on port `8080`.
 
 Access the server from your browser at http://localhost:8080/index.html
 
-| Endpoint      |                              |
+| Endpoint      | screenshot                   |
 |---------------|------------------------------|
 | `/index.html` | ![index.png](pics/index.png) |
 | `/home.html`  | ![home.png](pics/home.png)   |
